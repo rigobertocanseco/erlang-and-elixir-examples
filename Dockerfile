@@ -20,8 +20,8 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # Set versions
-ENV ERLANG_VERSION=1:23.0
-ENV ELIXIR_VERSION=1.11.2
+# ENV ERLANG_VERSION=1:23.0
+# ENV ELIXIR_VERSION=1.11.2
 
 WORKDIR /tmp
 
@@ -36,16 +36,5 @@ RUN wget http://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb
 RUN apt-get install ./erlang-solutions_2.0_all.deb -y
 RUN apt-get update && apt-get install esl-erlang -y && apt-get install elixir -y && apt-get clean
 RUN rm -rf /var/lib/apt/list/* /tmp/* /var/tmp/*
-
-# Set up Elixir from precompiled zip on GitHub
-#WORKDIR /usr/local/elixir
-#RUN wget https://github.com/elixir-lang/elixir/releases/download/v$ELIXIR_VERSION/Precompiled.zip \
-#    && unzip Precompiled.zip \
-#    && ln -s /usr/local/elixir/bin/elixirc /usr/local/bin/elixirc \
-#    && ln -s /usr/local/elixir/bin/elixir /usr/local/bin/elixir \
-#    && ln -s /usr/local/elixir/bin/mix /usr/local/bin/mix \
-#    && ln -s /usr/local/elixir/bin/iex /usr/local/bin/iex \
-#    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-#    && rm /usr/local/elixir/Precompiled.zip
 
 WORKDIR /
